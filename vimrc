@@ -79,5 +79,13 @@ inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
-" add surround plugin github.com/tpope/vim-surround
+" clipboard settings for conventional copy/paste
+set clipboard=unnamed
+set clipboard=unnamedplus
 
+" remap escape to jk or kj combo
+inoremap jk <C-C>
+inoremap kj <C-C>
+
+" show line ending and tab characters
+" set list 
