@@ -5,3 +5,6 @@
 [submodule "ctrlpvim"]
 	path = vim/pack/vendor/start/ctrlp.vim 
 	url = https://github.com/ctrlpvim/ctrlp.vim
+[submodule "vim/pack/tpope/start"]
+	path = vim/pack/tpope/start
+	url = https://tpope.io/vim/surround.git
