@@ -2,9 +2,10 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "ctrlpvim"]
+[submodule "vim/pack/ctrlp.vim"]
 	path = vim/pack/vendor/start/ctrlp.vim 
 	url = https://github.com/ctrlpvim/ctrlp.vim
-[submodule "vim/pack/tpope/start"]
-	path = vim/pack/tpope/start
+[submodule "vim/pack/vim-surround"]
+	path = vim/pack/vendor/start/vim-surround
 	url = https://tpope.io/vim/surround.git
+
