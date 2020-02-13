@@ -93,3 +93,6 @@ inoremap kj <C-C>
 " set ctrl-n for NERDTree plugin
 map <C-n> :NERDTreeToggle<CR>
 
+" nerdcommenter says you need to do this
+filetype plugin on
+
