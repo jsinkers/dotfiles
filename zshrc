@@ -126,3 +126,13 @@ unsetopt BEEP
 eval `dircolors ~/.dircolors`
 
 prompt_context(){}
+
+# add some aliases
+alias v="vim"
+alias sl="ls"
+alias mv="mv -i" # prompt before overwriting
+alias mkdir="mkdir -p" # make parent dirs if needed
+alias df="df -h" # print human readable format
+alias gs="git status"
+alias dc="cd" # spelling mistakes
+
