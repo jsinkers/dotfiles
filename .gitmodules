@@ -11,3 +11,12 @@
 [submodule "vim/pack/vendor/start/vim-surround"]
 	path = vim/pack/vendor/start/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "vim/pack/vendor/start/nerdtree"]
+	path = vim/pack/vendor/start/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule "vim/pack/vendor/start/vim-airline"]
+	path = vim/pack/vendor/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "vim/pack/vendor/start/nerdcommenter"]
+	path = vim/pack/vendor/start/nerdcommenter
+	url = https://github.com/preservim/nerdcommenter

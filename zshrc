@@ -42,7 +42,7 @@ ZSH_THEME="agnoster"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -68,7 +68,26 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  alias-finder
+  autopep8
+  catimg
+  compleat
+  copyfile
+  debian
+  dircycle
+  docker
+  dotenv
+  extract
+  fasd
+  gpg-agent
+  git
+  git-extras
+  npm
+  pip
+  vi-mode
+  web-search
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -89,6 +108,12 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# turn off all beeps
+unsetopt BEEP
+
+# turn off autocompletion beeps
+# unsetopt LIST_BEEP
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -101,3 +126,13 @@ source $ZSH/oh-my-zsh.sh
 eval `dircolors ~/.dircolors`
 
 prompt_context(){}
+
+# add some aliases
+alias v="vim"
+alias sl="ls"
+alias mv="mv -i" # prompt before overwriting
+alias mkdir="mkdir -p" # make parent dirs if needed
+alias df="df -h" # print human readable format
+alias gs="git status"
+alias dc="cd" # spelling mistakes
+

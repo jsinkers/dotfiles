@@ -89,3 +89,10 @@ inoremap kj <C-C>
 
 " show line ending and tab characters
 " set list 
+
+" set ctrl-n for NERDTree plugin
+map <C-n> :NERDTreeToggle<CR>
+
+" nerdcommenter says you need to do this
+filetype plugin on
+
