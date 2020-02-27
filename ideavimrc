@@ -1,6 +1,5 @@
 " reference https://www.jetbrains.com/pycharm/guide/tips/enable-ideavim/
 " use normal copy paste functionality without worrying about which clipboard
-
 map <leader>a :action $SelectAll<CR>
 map <leader>c :action $Copy<CR>
 map <leader>v :action $Paste<CR>
@@ -110,5 +109,3 @@ set clipboard=unnamedplus
 " remap escape to jk or kj combo
 inoremap jk <C-C>
 inoremap kj <C-C>
-
-
