@@ -12,6 +12,7 @@
     ~/.zshrc: zshrc
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
+    ~/.pandoc: pandoc
 - create:
     - ~/downloads
     - ~/.vim/undo-history
