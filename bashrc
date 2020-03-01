@@ -115,3 +115,12 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# run screenfetch on start
+screenfetch
+# make zsh default
+bash -c zsh
+
+# if not running interactively don't do anything
+case $- in
+

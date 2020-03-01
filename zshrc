@@ -83,10 +83,12 @@ plugins=(
   gpg-agent
   git
   git-extras
+  history-substring-search
   npm
   pip
   vi-mode
   web-search
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -136,3 +138,5 @@ alias df="df -h" # print human readable format
 alias gs="git status"
 alias dc="cd" # spelling mistakes
 
+# due to zsh-syntax-highlighting plugin error 
+ZSH_DISABLE_COMPFIX=true
