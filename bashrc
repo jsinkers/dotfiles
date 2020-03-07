@@ -117,7 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 # run screenfetch on start
-screenfetch
+# screenfetch
 # make zsh default
 bash -c zsh
 

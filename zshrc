@@ -137,6 +137,13 @@ alias mkdir="mkdir -p" # make parent dirs if needed
 alias df="df -h" # print human readable format
 alias gs="git status"
 alias dc="cd" # spelling mistakes
+alias toggle-colours="alacritty-colorscheme -C ~/.eendroroy-alacritty-theme/themes -T"
+alias list-colours="alacritty-colorscheme -C ~/.eendroroy-alacritty-theme/themes -l" 
+alias show-colours="alacritty-colorscheme -s"
+alias set-colours="alacritty-colorscheme -C ~/.eendroroy-alacritty-theme/themes -a" 
 
 # due to zsh-syntax-highlighting plugin error 
 ZSH_DISABLE_COMPFIX=true
+
+# run screenfetch on start
+screenfetch
