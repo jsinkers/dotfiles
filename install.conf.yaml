@@ -13,6 +13,7 @@
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
     ~/.pandoc: pandoc
+    ~/.config: config
 - create:
     - ~/downloads
     - ~/.vim/undo-history
