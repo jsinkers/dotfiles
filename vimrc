@@ -57,7 +57,7 @@ set incsearch
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 
 " Disable audible bell because it's annoying.
-set noerrorbells visualbell t_vb=
+" set noerrorbells visualbell t_vb=
 
 " Enable mouse support. You should avoid relying on this too much, but it can
 " sometimes be convenient.
@@ -89,6 +89,18 @@ inoremap kj <C-C>
 
 " show line ending and tab characters
 " set list 
+
+" cursor settings
+" https://stackoverflow.com/questions/6488683/how-do-i-change-the-vim-cursor-in-insert-normal-mode
+"autocmd InsertEnter,InsertLeave *set cul!
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[1 q"
+
+" optional reset cursor on start:
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[1 q"
+augroup END
 
 " set ctrl-n for NERDTree plugin
 map <C-n> :NERDTreeToggle<CR>

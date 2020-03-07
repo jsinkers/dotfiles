@@ -20,4 +20,8 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-
+  - command: cp config/alacritty/alacritty.yml /mnt/c/Users/James/AppData/Roaming/alacritty
+    description: Syncing alacritty config to Windows
+  - command: cp ideavimrc /mnt/c/Users/James/.ideavimrc
+    description: Syncing IDEA vim config to Windows
+ 

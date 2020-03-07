@@ -58,7 +58,7 @@ ENABLE_CORRECTION="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -111,7 +111,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # turn off all beeps
-unsetopt BEEP
+#unsetopt BEEP
 
 # turn off autocompletion beeps
 # unsetopt LIST_BEEP
@@ -146,4 +146,5 @@ alias set-colours="alacritty-colorscheme -C ~/.eendroroy-alacritty-theme/themes 
 ZSH_DISABLE_COMPFIX=true
 
 # run screenfetch on start
-screenfetch
+cd ~
+screenfetch -w
