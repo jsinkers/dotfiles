@@ -137,10 +137,12 @@ alias mkdir="mkdir -p" # make parent dirs if needed
 alias df="df -h" # print human readable format
 alias gs="git status"
 alias dc="cd" # spelling mistakes
-alias toggle-colours="alacritty-colorscheme -C ~/.eendroroy-alacritty-theme/themes -T"
+alias toggle-colours="alacritty-colorscheme -C ~/.eendroroy-alacritty-theme/themes -T && update-alacritty-config"
 alias list-colours="alacritty-colorscheme -C ~/.eendroroy-alacritty-theme/themes -l" 
 alias show-colours="alacritty-colorscheme -s"
 alias set-colours="alacritty-colorscheme -C ~/.eendroroy-alacritty-theme/themes -a" 
+# after updating colours etc it will be necessary to update alacritty config in windows until a better solution is found
+alias update-alacritty-config="cp ~/.config/alacritty/alacritty.yml /mnt/c/Users/James/AppData/Roaming/alacritty/"
 
 # due to zsh-syntax-highlighting plugin error 
 ZSH_DISABLE_COMPFIX=true

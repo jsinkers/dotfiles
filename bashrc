@@ -119,8 +119,8 @@ fi
 # run screenfetch on start
 # screenfetch
 # make zsh default
-bash -c zsh
+#bash -c zsh
 
 # if not running interactively don't do anything
-case $- in
+#case $- in
 
