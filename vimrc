@@ -108,3 +108,20 @@ map <C-n> :NERDTreeToggle<CR>
 " nerdcommenter says you need to do this
 filetype plugin on
 
+" vim-syntastic default settings
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" see :help airline-syntastic
+let g:airline#extensions#syntastic#enabled = 1
+let airline#extensions#syntastic#error_symbol = 'E:'
+let airline#extensions#syntastic#stl_format_err = '%E{[%fe(#%e)]}'
+let airline#extensions#syntastic#warning_symbol = 'W:'
+let airline#extensions#syntastic#stl_format_warn = '%W{[%fw(#%w)]}'
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0 
+
+" let g:syntastic_c_checkers = ['syntastic-checkers-c']
