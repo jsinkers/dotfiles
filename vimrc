@@ -125,3 +125,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0 
 
 " let g:syntastic_c_checkers = ['syntastic-checkers-c']
+
+" gitgutter stuff
+let g:airline#extensions#hunks#enabled = 1
