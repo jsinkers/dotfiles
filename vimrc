@@ -102,17 +102,27 @@ au!
 autocmd VimEnter * silent !echo -ne "\e[1 q"
 augroup END
 
+" indentation
+set autoindent
+set smartindent
+set tabstop=4    " tab width is 4 spaces
+set shiftwidth=4 " indent also with 4 spaces
+set expandtab      " expand tabs to spaces
+
+if has("autocmd")
+    " If the filetype is Makefile then we need to use tabs
+    " So do not expand tabs into space.
+    autocmd FileType make   set noexpandtab
+endif
+
+" Plugins settings
 " set ctrl-n for NERDTree plugin
 map <C-n> :NERDTreeToggle<CR>
 
 " nerdcommenter says you need to do this
 filetype plugin on
 
-" vim-syntastic default settings
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" see :help airline-syntastic
+" vim-syntastic airline settings
 let g:airline#extensions#syntastic#enabled = 1
 let airline#extensions#syntastic#error_symbol = 'E:'
 let airline#extensions#syntastic#stl_format_err = '%E{[%fe(#%e)]}'
