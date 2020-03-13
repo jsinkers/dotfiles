@@ -2,11 +2,40 @@
     link:
       relink: true
 
-- clean: ['~']
+#- clean: [~]
+
+- create:
+    - ~/downloads
+    - ~/.vim/undo-history
+
+- shell:
+  #- command: ZSH=~/.dotfiles/oh-my-zsh
+  #  description: Set ZSH environment variable
+  #- command: curl -Lo install-omz.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh && chmod u+x install-omz.sh
+  # description: Download oh-my-zsh install script
+  #  stdout: true
+  #  stderr: true
+  #- command: env ZSH=~/.dotfiles/oh-my-zsh ./install-omz.sh --keep-zshrc
+  #- command: sh ./install-omz.sh --keep-zshrc
+  #  description: intall oh-my-zsh
+  # stdout: true
+  #  stderr: true
+  #- command: ln -s ~/.dotfiles/oh-my-zsh ~/.oh-my-zsh
+  #  description: create symlink for oh-my-zsh
+  #  stdout: true
+  #  stderr: true
+  - [git submodule update --init --recursive, Installing submodules]
+  - command: cp config/alacritty/alacritty.yml /mnt/c/Users/James/AppData/Roaming/alacritty
+    description: Syncing alacritty config to Windows
+  - command: cp ideavimrc /mnt/c/Users/James/.ideavimrc
+    description: Syncing IDEA vim config to Windows
+  - command: source ~/.zshrc
+    description: Restart zsh
+
 
 - link:
     ~/.bashrc: bashrc
-    ~/.dotfiles: ''
+    #~/.dotfiles: ''
     ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.zshrc: zshrc
@@ -14,14 +43,4 @@
     ~/.tmux.conf: tmux.conf
     ~/.pandoc: pandoc
     ~/.config: config
-- create:
-    - ~/downloads
-    - ~/.vim/undo-history
-
-- shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  - command: cp config/alacritty/alacritty.yml /mnt/c/Users/James/AppData/Roaming/alacritty
-    description: Syncing alacritty config to Windows
-  - command: cp ideavimrc /mnt/c/Users/James/.ideavimrc
-    description: Syncing IDEA vim config to Windows
- 
+    ~/.oh-my-zsh/custom: oh-my-zsh/custom
