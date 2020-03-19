@@ -41,3 +41,5 @@
     ~/.pandoc: pandoc
     ~/.config: config
     ~/.oh-my-zsh/custom: oh-my-zsh/custom
+    ~/.dircolors: dircolors
+
