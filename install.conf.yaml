@@ -26,6 +26,10 @@
     description: Syncing alacritty config to Windows
   - command: cp ideavimrc /mnt/c/Users/James/.ideavimrc
     description: Syncing IDEA vim config to Windows
+  - command: chsh -s $(which zsh)
+    description: change default shell to ZSH
+    stdout: true
+    stderr: true
   - command: source ~/.zshrc
     description: Restart zsh
 
