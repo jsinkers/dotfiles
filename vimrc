@@ -138,3 +138,7 @@ let g:syntastic_check_on_wq = 0
 
 " gitgutter stuff
 let g:airline#extensions#hunks#enabled = 1
+
+" markdown languages
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'java', 'javascript', 'c']
+
