@@ -109,3 +109,9 @@ set clipboard=unnamedplus
 " remap escape to jk or kj combo
 inoremap jk <C-C>
 "inoremap kj <C-C>
+
+" so that when using snake case, you can use cw to change word between
+" undescores: cw, and to change full word is cW
+" see https://superuser.com/questions/244040/how-do-i-change-until-the-next-underscore-in-vim
+set iskeyword-=_
+

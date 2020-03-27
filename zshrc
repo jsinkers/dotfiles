@@ -91,6 +91,15 @@ plugins=(
   zsh-syntax-highlighting
 )
 
+# due to "widgets can only be called when zle is active" error 
+# https://stackoverflow.com/questions/20357441/zsh-on-10-9-widgets-can-only-be-called-when-zle-is-active
+TRAPWINCH() {
+    zle && { zle reset-prompt; zle -R }
+}
+#
+# due to zsh-syntax-highlighting plugin error 
+ZSH_DISABLE_COMPFIX=true
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -104,7 +113,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
 else
-   export EDITOR='mvim'
+   export EDITOR='vim'
 fi
 
 # Compilation flags
@@ -144,9 +153,7 @@ alias set-colours="alacritty-colorscheme -C ~/.eendroroy-alacritty-theme/themes 
 # after updating colours etc it will be necessary to update alacritty config in windows until a better solution is found
 alias update-alacritty-config="cp ~/.config/alacritty/alacritty.yml /mnt/c/Users/James/AppData/Roaming/alacritty/"
 
-# due to zsh-syntax-highlighting plugin error 
-ZSH_DISABLE_COMPFIX=true
 
 # run screenfetch on start
-cd ~
+# cd ~
 screenfetch -w

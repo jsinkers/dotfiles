@@ -32,6 +32,8 @@
     stderr: true
   - command: source ~/.zshrc
     description: Restart zsh
+  - command: echo "YouCompleteMe"
+    description: if you want youcompleteme, you need to install it separately!
 
 
 - link:

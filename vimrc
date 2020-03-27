@@ -109,11 +109,30 @@ set tabstop=4    " tab width is 4 spaces
 set shiftwidth=4 " indent also with 4 spaces
 set expandtab      " expand tabs to spaces
 
+
 if has("autocmd")
     " If the filetype is Makefile then we need to use tabs
     " So do not expand tabs into space.
     autocmd FileType make   set noexpandtab
 endif
+
+" so that when using snake case, you can use cw to change word between
+" undescores: cw, and to change full word is cW
+" see https://superuser.com/questions/244040/how-do-i-change-until-the-next-underscore-in-vim
+set iskeyword-=_
+
+" solarized color scheme
+syntax enable
+set background=dark
+colorscheme solarized
+
+" nb for light mode
+" set background=light
+
+" Press Space to turn off highlighting and clear any message already displayed.
+" https://vim.fandom.com/wiki/Highlight_all_search_pattern_matches
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+set hlsearch
 
 " Plugins settings
 " set ctrl-n for NERDTree plugin
