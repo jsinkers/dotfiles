@@ -23,13 +23,6 @@
 [submodule "vim/pack/vendor/start/vim-fugitive"]
 	path = vim/pack/vendor/start/vim-fugitive
 	url = https://tpope.io/vim/fugitive.git
-[submodule "vim/pack/vendor/start/vim-syntastic"]
-	path = vim/pack/vendor/start/vim-syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
-[submodule "vim/pack/vendor/start/vim-gitgutter"]
-	path = vim/pack/vendor/start/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "oh-my-zsh/custom/plugins/zsh-history-substring-search"]
 	path = oh-my-zsh/custom/plugins/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
@@ -39,12 +32,9 @@
 [submodule "vim/pack/vendor/start/vim-repeat"]
 	path = vim/pack/vendor/start/vim-repeat
 	url = https://tpope.io/vim/repeat.git
-[submodule "vim/pack/vendor/start/ycm"]
-	path = vim/pack/vendor/start/ycm
-	url = https://github.com/ycm-core/YouCompleteMe.git
-[submodule "vim-colors-solarized"]
-	path = vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/pack/vendor/start/vim-colors-solarized"]
 	path = vim/pack/vendor/start/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/bundle/Vundle.vim"]
+	path = vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
