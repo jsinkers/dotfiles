@@ -72,6 +72,7 @@ plugins=(
   alias-finder
   autopep8
   catimg
+  colored-man-pages
   compleat
   copyfile
   debian
@@ -157,3 +158,6 @@ alias update-alacritty-config="cp ~/.config/alacritty/alacritty.yml /mnt/c/Users
 # run screenfetch on start
 # cd ~
 screenfetch -w
+
+# Created by `userpath` on 2020-04-03 06:17:38
+export PATH="$PATH:/home/sinkers/.local/bin:/usr/local/go/bin"

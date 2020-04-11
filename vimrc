@@ -10,8 +10,35 @@
 " loaded some other way (e.g. saved as `foo`, and then Vim started with
 " `vim -u foo`).
 set nocompatible
+filetype off
 
-" Turn on syntax highlighting.
+" Vundle 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-sensible'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'rdnetto/YCM-Generator'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+
+" Put your non-Plugin stuff after this line
+"Turn on syntax highlighting.
 syntax on
 
 " Disable the default Vim startup message.
@@ -31,11 +58,12 @@ set relativenumber
 " Always show the status line at the bottom, even if you only have one window open.
 set laststatus=2
 
+" handled by vim-sensible
 " The backspace key has slightly unintuitive behavior by default. For example,
 " by default, you can't backspace before the insertion point set with 'i'.
 " This configuration makes backspace behave more reasonably, in that you can
 " backspace over anything.
-set backspace=indent,eol,start
+"set backspace=indent,eol,start
 
 " By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
 " shown in any window) that has unsaved changes. This is to prevent you from "
@@ -50,8 +78,9 @@ set hidden
 set ignorecase
 set smartcase
 
+" Handled by vim-sensible
 " Enable searching as you type, rather than waiting till you press enter.
-set incsearch
+"set incsearch
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
@@ -137,27 +166,58 @@ set hlsearch
 " Plugins settings
 " set ctrl-n for NERDTree plugin
 map <C-n> :NERDTreeToggle<CR>
+" start in NERDTree if no file specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " nerdcommenter says you need to do this
-filetype plugin on
+"filetype plugin on
 
 " vim-syntastic airline settings
-let g:airline#extensions#syntastic#enabled = 1
-let airline#extensions#syntastic#error_symbol = 'E:'
-let airline#extensions#syntastic#stl_format_err = '%E{[%fe(#%e)]}'
-let airline#extensions#syntastic#warning_symbol = 'W:'
-let airline#extensions#syntastic#stl_format_warn = '%W{[%fw(#%w)]}'
+" let g:airline#extensions#syntastic#enabled = 1
+" let airline#extensions#syntastic#error_symbol = 'E:'
+" let airline#extensions#syntastic#stl_format_err = '%E{[%fe(#%e)]}'
+" let airline#extensions#syntastic#warning_symbol = 'W:'
+" let airline#extensions#syntastic#stl_format_warn = '%W{[%fw(#%w)]}'
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0 
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0 
 
 " let g:syntastic_c_checkers = ['syntastic-checkers-c']
 
 " gitgutter stuff
-let g:airline#extensions#hunks#enabled = 1
+" let g:airline#extensions#hunks#enabled = 1
 
+" youcompleteme
+
+" enable/disable YCM integration >
+let g:airline#extensions#ycm#enabled = 1
+
+" set error count prefix >
+let g:airline#extensions#ycm#error_symbol = 'E:'
+
+" set warning count prefix >
+let g:airline#extensions#ycm#warning_symbol = 'W:'
+
+" YCM always show the location list
+"let g:ycm_always_populate_location_list = 1
+" YCM line highlighting
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_enable_diagnostic_signs = 1
+let g:ycm_enable_diagnostic_highlighting = 1
+let g:ycm_echo_current_diagnostic = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_open_loclist_on_ycm_diags = 1
 " markdown languages
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'java', 'javascript', 'c']
+
+" search for visually selected text with //,
+" https://vim.fandom.com/wiki/Search_for_visually_selected_text
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+" remap ctrl+space for YCM
+" https://stackoverflow.com/questions/7722177/how-do-i-map-ctrl-x-ctrl-o-to-ctrl-space-in-terminal-vim/12344382#12344382
+"inoremap <C-@> <C-Space>
 
