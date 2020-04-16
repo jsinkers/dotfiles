@@ -2,36 +2,12 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "vim/pack/vendor/start/vim-easymotion"]
-	path = vim/pack/vendor/start/vim-easymotion
-	url = https://github.com/easymotion/vim-easymotion
-[submodule "vim/pack/vendor/start/vim-surround"]
-	path = vim/pack/vendor/start/vim-surround
-	url = https://github.com/tpope/vim-surround
-[submodule "vim/pack/vendor/start/nerdtree"]
-	path = vim/pack/vendor/start/nerdtree
-	url = https://github.com/preservim/nerdtree.git
-[submodule "vim/pack/vendor/start/vim-airline"]
-	path = vim/pack/vendor/start/vim-airline
-	url = https://github.com/vim-airline/vim-airline
-[submodule "vim/pack/vendor/start/nerdcommenter"]
-	path = vim/pack/vendor/start/nerdcommenter
-	url = https://github.com/preservim/nerdcommenter
-[submodule "vim/pack/vendor/start/vim-fugitive"]
-	path = vim/pack/vendor/start/vim-fugitive
-	url = https://tpope.io/vim/fugitive.git
 [submodule "oh-my-zsh/custom/plugins/zsh-history-substring-search"]
 	path = oh-my-zsh/custom/plugins/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
 [submodule "oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
 	path = oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule "vim/pack/vendor/start/vim-repeat"]
-	path = vim/pack/vendor/start/vim-repeat
-	url = https://tpope.io/vim/repeat.git
-[submodule "vim/pack/vendor/start/vim-colors-solarized"]
-	path = vim/pack/vendor/start/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/bundle/Vundle.vim"]
 	path = vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
