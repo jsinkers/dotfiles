@@ -154,7 +154,6 @@ alias set-colours="alacritty-colorscheme -C ~/.eendroroy-alacritty-theme/themes 
 # after updating colours etc it will be necessary to update alacritty config in windows until a better solution is found
 alias update-alacritty-config="cp ~/.config/alacritty/alacritty.yml /mnt/c/Users/James/AppData/Roaming/alacritty/"
 
-
 # run screenfetch on start
 # cd ~
 screenfetch -w

@@ -24,6 +24,19 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-sensible'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'rdnetto/YCM-Generator'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-surround'
+Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'preservim/nerdcommenter'
+Plugin 'tpope/vim-repeat'
+"Plugin 'preservim/nerdtree.git'
+"Plugin 'easymotion/vim-easymotion'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-commentary'
+"Plugin 'ctrlpvim/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -164,14 +177,14 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 set hlsearch
 
 " Plugins settings
-" set ctrl-n for NERDTree plugin
-map <C-n> :NERDTreeToggle<CR>
-" start in NERDTree if no file specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"" set ctrl-n for NERDTree plugin
+"map <C-n> :NERDTreeToggle<CR>
+"" start in NERDTree if no file specified
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-" nerdcommenter says you need to do this
-"filetype plugin on
+"" nerdcommenter says you need to do this
+""filetype plugin on
 
 " vim-syntastic airline settings
 " let g:airline#extensions#syntastic#enabled = 1
@@ -202,7 +215,7 @@ let g:airline#extensions#ycm#error_symbol = 'E:'
 let g:airline#extensions#ycm#warning_symbol = 'W:'
 
 " YCM always show the location list
-"let g:ycm_always_populate_location_list = 1
+let g:ycm_always_populate_location_list = 1
 " YCM line highlighting
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_enable_diagnostic_signs = 1
@@ -211,6 +224,7 @@ let g:ycm_echo_current_diagnostic = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_open_loclist_on_ycm_diags = 1
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 " markdown languages
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'java', 'javascript', 'c']
 
@@ -221,3 +235,7 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " https://stackoverflow.com/questions/7722177/how-do-i-map-ctrl-x-ctrl-o-to-ctrl-space-in-terminal-vim/12344382#12344382
 "inoremap <C-@> <C-Space>
 
+" ultisnips triggers
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
