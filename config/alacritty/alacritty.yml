@@ -25,17 +25,17 @@ window:
   #
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
-  #position:
-  #  x: 0
-  #  y: 0
+  position:
+    x: 0
+    y: 0
 
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   #padding:
-  #  x: 0
-  #  y: 0
+    x: 5
+    y: 0
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -104,7 +104,8 @@ font:
   # Normal (roman) font face
   normal:
     #family: DroidSansMono NF
-    family: Droid Sans Mono Dotted for Powerline
+    #family: Droid Sans Mono Dotted for Powerline
+    family: Source Code Pro for Powerline
     #family: DejaVu Sans Mono
     # Font family
     #
@@ -113,6 +114,7 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # The `style` can be specified to pick a specific face.
+    #style: Regular
     style: Regular
 
   # Bold font face
@@ -313,9 +315,9 @@ colors:
 #
 # Specifying a `duration` of `0` will disable the visual bell.
 visual_bell:
-  animation: Ease
+  animation: EaseOutExpo
   duration: 50
-  color: '0xffffff'
+  color: '0x000000'
 
 # Background opacity
 #
@@ -366,7 +368,7 @@ shell:
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
-working_directory: "C:\\Users\\James\\AppData\\Local\\Packages\\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\\LocalState\\rootfs\\home\\sinkers"
+#working_directory: "C:\\Users\\James\\AppData\\Local\\Packages\\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\\LocalState\\rootfs\\home\\sinkers"
 
 # WinPTY backend (Windows only)
 #
@@ -381,12 +383,12 @@ working_directory: "C:\\Users\\James\\AppData\\Local\\Packages\\CanonicalGroupLi
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
 
-debug:
+#debug:
   # Display the time it takes to redraw each frame.
   #render_timer: true
 
   # Keep the log file after quitting Alacritty.
-  persistent_logging: true
+  #persistent_logging: true
 
   # Log level
   #
@@ -397,10 +399,10 @@ debug:
   #   - Info
   #   - Debug
   #   - Trace
-  log_level: Info
+  #log_level: Info
 
   # Print all received window events.
-  print_events: true
+  #print_events: true
 
   # Record all characters and escape sequences as test data.
   #ref_test: false

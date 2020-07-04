@@ -32,6 +32,10 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'preservim/nerdcommenter'
 Plugin 'tpope/vim-repeat'
+Plugin 'lervag/vimtex'
+Plugin 'iamcco/markdown-preview.nvim' ", { 'do': 'cd app & yarn install' }
+" For this to install successfully, run the following command after install: :call mkdp#util#install()
+Plugin 'ap/vim-css-color'
 "Plugin 'preservim/nerdtree.git'
 "Plugin 'easymotion/vim-easymotion'
 "Plugin 'tpope/vim-fugitive'
@@ -202,6 +206,13 @@ set hlsearch
 
 " gitgutter stuff
 " let g:airline#extensions#hunks#enabled = 1
+" Colors
+let g:gitgutter_override_sign_column_highlight = 0
+highlight clear SignColumn
+highlight GitGutterAdd ctermfg=2
+highlight GitGutterChange ctermfg=3
+highlight GitGutterDelete ctermfg=1
+highlight GitGutterChangeDelete ctermfg=4
 
 " youcompleteme
 
@@ -225,6 +236,7 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_open_loclist_on_ycm_diags = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_completion = 1
 " markdown languages
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'java', 'javascript', 'c']
 
@@ -239,3 +251,14 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" vimtex settings
+" based on https://castel.dev/post/lecture-notes-1/
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+" markdown preview settings https://github.com/iamcco/markdown-preview.nvim
+let g:mkdp_markdown_css=expand('~/onedrive-docs/Notable/static/css/main.css')
