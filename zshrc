@@ -153,6 +153,14 @@ alias show-colours="alacritty-colorscheme -s"
 alias set-colours="alacritty-colorscheme -C ~/.eendroroy-alacritty-theme/themes -a" 
 # after updating colours etc it will be necessary to update alacritty config in windows until a better solution is found
 alias update-alacritty-config="cp ~/.config/alacritty/alacritty.yml /mnt/c/Users/James/AppData/Roaming/alacritty/"
+# disable rm for safety
+alias rm='echo "rm is disabled, use srm or /bin/rm instead."'
+# add safe remove srm 
+alias srm='/bin/rm -irv'
+# reminders to try other tools
+alias cat='echo "Try bat!" && cat'
+alias du='echo "Try dust!" && cat'
+alias fd=fdfind
 
 # run screenfetch on start
 # cd ~

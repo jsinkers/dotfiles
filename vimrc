@@ -31,16 +31,16 @@ Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'preservim/nerdcommenter'
+"Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
 Plugin 'lervag/vimtex'
-Plugin 'iamcco/markdown-preview.nvim' ", { 'do': 'cd app & yarn install' }
+Plugin 'iamcco/markdown-preview.nvim'
 " For this to install successfully, run the following command after install: :call mkdp#util#install()
 Plugin 'ap/vim-css-color'
-"Plugin 'preservim/nerdtree.git'
-"Plugin 'easymotion/vim-easymotion'
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'tpope/vim-commentary'
-"Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'scrooloose/nerdtree'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -262,3 +262,6 @@ let g:tex_conceal='abdmg'
 
 " markdown preview settings https://github.com/iamcco/markdown-preview.nvim
 let g:mkdp_markdown_css=expand('~/onedrive-docs/Notable/static/css/main.css')
+
+" ctrlp cursorline
+hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
