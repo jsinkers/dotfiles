@@ -1,0 +1,12 @@
+{
+  "diagnostics": {
+    "%2Fhome%2Fsinkers%2Fhaskell-language-server": [
+      ":CocConfig"
+    ]
+  },
+  "commands": {
+    "%2Fhome%2Fsinkers%2Fhaskell-language-server": [
+      "diagnostic"
+    ]
+  }
+}
