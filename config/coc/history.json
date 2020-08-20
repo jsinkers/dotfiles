@@ -2,6 +2,9 @@
   "diagnostics": {
     "%2Fhome%2Fsinkers%2Fhaskell-language-server": [
       ":CocConfig"
+    ],
+    "%2Fmnt%2Fc%2FUsers%2FJames%2FOneDrive%2FDocuments%2FNotable%2F_notebooks%2Fdistrib_sys": [
+      "?"
     ]
   },
   "commands": {
