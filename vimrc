@@ -129,7 +129,7 @@ inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
 " clipboard settings for conventional copy/paste
-set clipboard=unnamed
+"set clipboard=unnamed
 set clipboard=unnamedplus
 
 " remap escape to jk or kj combo
@@ -405,3 +405,13 @@ let airline#extensions#coc#warning_symbol = 'W:'
 "let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
 " change warning format: >
 let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+
+" https://vi.stackexchange.com/questions/15182/copying-from-vim-to-ubuntu-bash-on-windows/15190#15190
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " default location
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | '.s:clip)
+    augroup END
+end
