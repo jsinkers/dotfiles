@@ -35,6 +35,9 @@ Plugin 'preservim/nerdcommenter'
 Plugin 'tpope/vim-repeat'
 Plugin 'lervag/vimtex'
 Plugin 'iamcco/markdown-preview.nvim'
+"Plugin 'mzlogin/vim-markdown-toc'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 " For this to install successfully, run the following command after install: :call mkdp#util#install()
 Plugin 'ap/vim-css-color'
 "Plugin 'scrooloose/nerdtree'
@@ -44,6 +47,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'neoclide/coc.nvim'
 Plugin 'lifepillar/vim-solarized8'
+Plugin 'kevinoid/vim-jsonc'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -58,6 +62,9 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 
 " Put your non-Plugin stuff after this line
+" spelling
+set spell spelllang=en_us,en_au
+
 "Turn on syntax highlighting.
 syntax on
 
@@ -181,6 +188,9 @@ colorscheme solarized8
 " nb for light mode
 " set background=light
 
+" leader map to space
+"nnoremap <SPACE> <Nop>
+
 " Press Space to turn off highlighting and clear any message already displayed.
 " https://vim.fandom.com/wiki/Highlight_all_search_pattern_matches
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
@@ -214,13 +224,13 @@ highlight GitGutterChangeDelete ctermfg=4
 " youcompleteme
 
 " enable/disable YCM integration >
-let g:airline#extensions#ycm#enabled = 1
+"let g:airline#extensions#ycm#enabled = 1
 
 " set error count prefix >
-let g:airline#extensions#ycm#error_symbol = 'E:'
+"let g:airline#extensions#ycm#error_symbol = 'E:'
 
 " set warning count prefix >
-let g:airline#extensions#ycm#warning_symbol = 'W:'
+"let g:airline#extensions#ycm#warning_symbol = 'W:'
 
 " YCM always show the location list
 "let g:ycm_always_populate_location_list = 1
@@ -260,6 +270,9 @@ let g:tex_conceal='abdmg'
 
 " markdown preview settings https://github.com/iamcco/markdown-preview.nvim
 let g:mkdp_markdown_css=expand('~/onedrive-docs/Notable/static/css/main.css')
+
+" FileType specific settings
+autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
 
 " ctrlp cursorline
 hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
@@ -369,7 +382,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Using CocList
 " Show all diagnostics
@@ -390,7 +403,7 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " coc language support
-" haskell: 
+" haskell: in CocConfig
 
 
 " airline coc support :h airline#extensions#coc
@@ -402,7 +415,7 @@ let airline#extensions#coc#error_symbol = 'E:'
 " change warning symbol: >
 let airline#extensions#coc#warning_symbol = 'W:'
 " change error format: >
-"let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
 " change warning format: >
 let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 
@@ -410,8 +423,14 @@ let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " default location
 if executable(s:clip)
-    augroup WSLYank
-        autocmd!
-        autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | '.s:clip)
-    augroup END
+   "augroup WSLYank
+       "autocmd!
+       "autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | '.s:clip)
+   "augroup END
 end
+
+" markdown folding configuration
+let g:vim_markdown_folding_level = 3
+let g:vim_markdown_math = 1
+" let g:mkdp_open_to_the_world = 1
+let g:mkdp_browser='wsl-open'

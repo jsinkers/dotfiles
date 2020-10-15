@@ -139,6 +139,13 @@ eval `dircolors ~/.dircolors`
 
 prompt_context(){}
 
+# https://unix.stackexchange.com/questions/125385/combined-mkdir-and-cd
+mkcdir ()
+{
+    mkdir -p -- "$1" &&
+    cd -P -- "$1"
+}
+
 # add some aliases
 alias v="vim"
 alias sl="ls"
@@ -158,7 +165,7 @@ alias rm='echo "rm is disabled, use srm or /bin/rm instead."'
 # add safe remove srm 
 alias srm='/bin/rm -irv'
 # reminders to try other tools
-alias cat='echo "Try bat!" && cat'
+#alias cat='echo "Try bat!" && cat'
 alias du='echo "Try dust!" && cat'
 alias fd=fdfind
 
@@ -168,3 +175,4 @@ screenfetch -w
 
 # Created by `userpath` on 2020-04-03 06:17:38
 export PATH="$PATH:/home/sinkers/.local/bin:/usr/local/go/bin"
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
