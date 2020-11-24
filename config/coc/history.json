@@ -5,11 +5,47 @@
     ],
     "%2Fmnt%2Fc%2FUsers%2FJames%2FOneDrive%2FDocuments%2FNotable%2F_notebooks%2Fdistrib_sys": [
       "?"
+    ],
+    "%2Fhome%2Fsinkers%2F": {
+      "dotfiles": [
+        "?"
+      ]
+    },
+    "%2Fmnt%2Fc%2FUsers%2FJames%2FOneDrive%2FDocuments%2FNotable%2F_notebooks%2Fdeclarative": [
+      " "
+    ],
+    "%2Fmnt%2Fc%2FUsers%2FJames%2FOneDrive%2Funi%2F2020_s1%2Fdeclarative%2Fhaskell": [
+      " "
+    ],
+    "%2Fhome%2Fsinkers%2Fs2%2Fdeclarative%2Fcribbage": [
+      " =="
+    ],
+    "%2Fhome%2Fsinkers%2Fs2%2Fmodels_of_comp%2Fassignment-02": [
+      " "
+    ],
+    "%2Fhome%2Fsinkers%2Fs2%2Fdeclarative%2Fworkshops": [
+      " "
+    ],
+    "%2Fhome%2Fsinkers%2Fs2%2Fsmd": [
+      " "
+    ],
+    "%2Fhome%2Fsinkers%2Fnotes%2F_notebooks%2Fdistrib_sys": [
+      " "
+    ],
+    "%2Fhome%2Fsinkers%2Fs2%2Fdeclarative%2Fzoom": [
+      "a"
     ]
   },
   "commands": {
     "%2Fhome%2Fsinkers%2Fhaskell-language-server": [
       "diagnostic"
     ]
+  },
+  "symbols": {
+    "%2Fhome%2Fsinkers%2F": {
+      "dotfiles": [
+        "nnoremap"
+      ]
+    }
   }
 }

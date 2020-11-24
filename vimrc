@@ -38,6 +38,7 @@ Plugin 'iamcco/markdown-preview.nvim'
 "Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'luochen1990/rainbow'
 " For this to install successfully, run the following command after install: :call mkdp#util#install()
 Plugin 'ap/vim-css-color'
 "Plugin 'scrooloose/nerdtree'
@@ -48,6 +49,7 @@ Plugin 'neovimhaskell/haskell-vim'
 Plugin 'neoclide/coc.nvim'
 Plugin 'lifepillar/vim-solarized8'
 Plugin 'kevinoid/vim-jsonc'
+Plugin 'dbeniamine/cheat.sh-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -260,19 +262,6 @@ let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" vimtex settings
-" based on https://castel.dev/post/lecture-notes-1/
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-
-" markdown preview settings https://github.com/iamcco/markdown-preview.nvim
-let g:mkdp_markdown_css=expand('~/onedrive-docs/Notable/static/css/main.css')
-
-" FileType specific settings
-autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
 
 " ctrlp cursorline
 hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
@@ -429,8 +418,27 @@ if executable(s:clip)
    "augroup END
 end
 
+" vimtex settings
+" based on https://castel.dev/post/lecture-notes-1/
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+" markdown settings
+" FileType specific settings
+autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 indentexpr=
+
 " markdown folding configuration
-let g:vim_markdown_folding_level = 3
+let g:vim_markdown_folding_level = 6
+"let g:vim_markdown_folding
 let g:vim_markdown_math = 1
+
+" markdown preview settings https://github.com/iamcco/markdown-preview.nvim
+let g:mkdp_markdown_css=expand('~/onedrive-docs/Notable/static/css/main.css')
 " let g:mkdp_open_to_the_world = 1
 let g:mkdp_browser='wsl-open'
+
+" rainbow toggle: activate on startup = 1, activate later with :RainbowToggle
+let g:rainbow_active = 0

@@ -139,11 +139,19 @@ eval `dircolors ~/.dircolors`
 
 prompt_context(){}
 
+# make a directory, and move into it
 # https://unix.stackexchange.com/questions/125385/combined-mkdir-and-cd
 mkcdir ()
 {
     mkdir -p -- "$1" &&
     cd -P -- "$1"
+}
+
+# move to the directory of a symbolic link
+# https://superuser.com/questions/231989/move-to-the-directory-of-a-symbolic-link
+function cdl
+{
+    cd $(dirname $(readlink -f "$1"))
 }
 
 # add some aliases
@@ -168,6 +176,7 @@ alias srm='/bin/rm -irv'
 #alias cat='echo "Try bat!" && cat'
 alias du='echo "Try dust!" && cat'
 alias fd=fdfind
+alias ghci='ghci -fwarn-incomplete-patterns'
 
 # run screenfetch on start
 # cd ~
@@ -176,3 +185,12 @@ screenfetch -w
 # Created by `userpath` on 2020-04-03 06:17:38
 export PATH="$PATH:/home/sinkers/.local/bin:/usr/local/go/bin"
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# for zsh tab completion on cht.sh
+fpath=(~/.zsh.d/ $fpath)
