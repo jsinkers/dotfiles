@@ -124,3 +124,4 @@ fi
 # if not running interactively don't do anything
 #case $- in
 
+[ -f "/home/sinkers/.ghcup/env" ] && source "/home/sinkers/.ghcup/env" # ghcup-env

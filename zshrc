@@ -155,7 +155,6 @@ function cdl
 }
 
 # add some aliases
-alias v="vim"
 alias sl="ls"
 alias mv="mv -i" # prompt before overwriting
 alias mkdir="mkdir -p" # make parent dirs if needed
@@ -177,7 +176,8 @@ alias srm='/bin/rm -irv'
 alias du='echo "Try dust!" && cat'
 alias fd=fdfind
 alias ghci='ghci -fwarn-incomplete-patterns'
-
+#alias v="vim"
+alias v='nvim'
 # run screenfetch on start
 # cd ~
 screenfetch -w
@@ -194,3 +194,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # for zsh tab completion on cht.sh
 fpath=(~/.zsh.d/ $fpath)
+
+[ -f "/home/sinkers/.ghcup/env" ] && source "/home/sinkers/.ghcup/env" # ghcup-env
+

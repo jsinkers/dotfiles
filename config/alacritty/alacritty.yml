@@ -29,11 +29,14 @@ window:
     x: 0
     y: 0
 
+  # Allow terminal applications to change Alacritty's window title.
+  dynamic_title: false
+
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  #padding:
+  padding:
     x: 5
     y: 0
 
@@ -314,7 +317,7 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 50
   color: '0x000000'
@@ -331,8 +334,6 @@ selection:
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: true
 
-# Allow terminal applications to change Alacritty's window title.
-dynamic_title: false
 
 cursor:
   # Cursor style
@@ -368,7 +369,7 @@ shell:
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
-#working_directory: "C:\\Users\\James\\AppData\\Local\\Packages\\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\\LocalState\\rootfs\\home\\sinkers"
+# working_directory: "C:\\Users\\James\\AppData\\Local\\Packages\\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\\LocalState\\rootfs\\home\\sinkers"
 
 # WinPTY backend (Windows only)
 #

@@ -24,7 +24,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-sensible'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'rdnetto/YCM-Generator'
-"Plugin 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'altercation/vim-colors-solarized.git'
@@ -50,6 +50,8 @@ Plugin 'neoclide/coc.nvim'
 Plugin 'lifepillar/vim-solarized8'
 Plugin 'kevinoid/vim-jsonc'
 Plugin 'dbeniamine/cheat.sh-vim'
+Plugin 'tikhomirov/vim-glsl.git'
+Plugin 'psliwka/vim-smoothie'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -412,10 +414,10 @@ let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " default location
 if executable(s:clip)
-   "augroup WSLYank
-       "autocmd!
-       "autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | '.s:clip)
-   "augroup END
+    "augroup WSLYank
+    "autocmd!
+    "autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | '.s:clip)
+    "augroup END
 end
 
 " vimtex settings
@@ -423,8 +425,16 @@ end
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
+let g:vimtex_latexmk_continuous=1
+let g:vimtex_compiler_progname = 'nvr'
 set conceallevel=1
 let g:tex_conceal='abdmg'
+" nvr --remote +"%line" "%file"
+
+" vimtex docs indicate you need to do this
+"if empty(v:servername) && exists('*remote_startserver')
+  "call remote_startserver('VIM')
+"endif
 
 " markdown settings
 " FileType specific settings
