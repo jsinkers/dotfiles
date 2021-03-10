@@ -28,6 +28,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'preservim/nerdcommenter'
@@ -52,6 +53,8 @@ Plugin 'kevinoid/vim-jsonc'
 Plugin 'dbeniamine/cheat.sh-vim'
 Plugin 'tikhomirov/vim-glsl.git'
 Plugin 'psliwka/vim-smoothie'
+Plugin 'justinmk/vim-sneak'
+Plugin 'wellle/targets.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -396,6 +399,9 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " coc language support
 " haskell: in CocConfig
 
+" allow scrolling of diagnostic window
+nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 
 " airline coc support :h airline#extensions#coc
 let g:airline#extensions#coc#enabled = 1
@@ -452,3 +458,16 @@ let g:mkdp_browser='wsl-open'
 
 " rainbow toggle: activate on startup = 1, activate later with :RainbowToggle
 let g:rainbow_active = 0
+
+" sneak settings
+let g:sneak#label = 1
+
+" replace f with sneak
+" map f <Plug>Sneak_s
+" map f <Plug>Sneak_f
+
+" remap f/t to one character sneak
+" map F <Plug>Sneak_F
+" map t <Plug>Sneak_t
+" map T <Plug>Sneak_T
+" map F <Plug>Sneak_S

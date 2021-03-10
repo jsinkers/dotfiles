@@ -2,4 +2,4 @@
 	email = sinclair.j@gmail.com
 	name = James Sinclair
 [credential]
-	helper = cache --timeout=600000
+	helper = cache --timeout=36000

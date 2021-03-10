@@ -178,6 +178,7 @@ alias fd=fdfind
 alias ghci='ghci -fwarn-incomplete-patterns'
 #alias v="vim"
 alias v='nvim'
+alias python='python3'
 # run screenfetch on start
 # cd ~
 screenfetch -w
@@ -197,3 +198,6 @@ fpath=(~/.zsh.d/ $fpath)
 
 [ -f "/home/sinkers/.ghcup/env" ] && source "/home/sinkers/.ghcup/env" # ghcup-env
 
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
