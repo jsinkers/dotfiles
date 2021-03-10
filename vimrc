@@ -55,6 +55,7 @@ Plugin 'tikhomirov/vim-glsl.git'
 Plugin 'psliwka/vim-smoothie'
 Plugin 'justinmk/vim-sneak'
 Plugin 'wellle/targets.vim'
+Plugin 'rust-lang/rust.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
