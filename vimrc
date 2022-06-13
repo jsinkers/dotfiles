@@ -56,6 +56,7 @@ Plugin 'psliwka/vim-smoothie'
 Plugin 'justinmk/vim-sneak'
 Plugin 'wellle/targets.vim'
 Plugin 'rust-lang/rust.vim'
+Plugin 'folke/which-key.nvim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -455,7 +456,7 @@ let g:vim_markdown_math = 1
 " markdown preview settings https://github.com/iamcco/markdown-preview.nvim
 let g:mkdp_markdown_css=expand('~/onedrive-docs/Notable/static/css/main.css')
 " let g:mkdp_open_to_the_world = 1
-let g:mkdp_browser='wsl-open'
+"let g:mkdp_browser='wsl-open'
 
 " rainbow toggle: activate on startup = 1, activate later with :RainbowToggle
 let g:rainbow_active = 0
@@ -472,3 +473,9 @@ let g:sneak#label = 1
 " map t <Plug>Sneak_t
 " map T <Plug>Sneak_T
 " map F <Plug>Sneak_S
+
+lua << EOF
+    require("which-key").setup {
+
+    }
+EOF
