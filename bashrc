@@ -125,3 +125,4 @@ fi
 #case $- in
 
 [ -f "/home/sinkers/.ghcup/env" ] && source "/home/sinkers/.ghcup/env" # ghcup-env
+. "$HOME/.cargo/env"

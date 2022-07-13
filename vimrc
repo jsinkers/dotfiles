@@ -14,52 +14,56 @@ filetype off
 
 " Vundle 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin("~/.vim/plugged")
+
+"call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-"Plugin 'ycm-core/YouCompleteMe'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-sensible'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'rdnetto/YCM-Generator'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-surround'
-Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'preservim/nerdcommenter'
+" Plug 'VundleVim/Vundle.vim'
+" Plugin 'ycm-core/YouCompleteMe'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-sensible'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'rdnetto/YCM-Generator'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-surround'
+Plug 'altercation/vim-colors-solarized'
+Plug 'flazz/vim-colorschemes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/nerdcommenter'
 "Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-repeat'
-Plugin 'lervag/vimtex'
-Plugin 'iamcco/markdown-preview.nvim'
+Plug 'tpope/vim-repeat'
+Plug 'lervag/vimtex'
+Plug 'iamcco/markdown-preview.nvim'
 "Plugin 'mzlogin/vim-markdown-toc'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'luochen1990/rainbow'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'luochen1990/rainbow'
 " For this to install successfully, run the following command after install: :call mkdp#util#install()
-Plugin 'ap/vim-css-color'
+Plug 'ap/vim-css-color'
 "Plugin 'scrooloose/nerdtree'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'neovimhaskell/haskell-vim'
-Plugin 'neoclide/coc.nvim'
-Plugin 'lifepillar/vim-solarized8'
-Plugin 'kevinoid/vim-jsonc'
-Plugin 'dbeniamine/cheat.sh-vim'
-Plugin 'tikhomirov/vim-glsl.git'
-Plugin 'psliwka/vim-smoothie'
-Plugin 'justinmk/vim-sneak'
-Plugin 'wellle/targets.vim'
-Plugin 'rust-lang/rust.vim'
-Plugin 'folke/which-key.nvim'
+Plug 'easymotion/vim-easymotion'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'lifepillar/vim-solarized8'
+Plug 'kevinoid/vim-jsonc'
+Plug 'dbeniamine/cheat.sh-vim'
+Plug 'tikhomirov/vim-glsl'
+Plug 'psliwka/vim-smoothie'
+Plug 'justinmk/vim-sneak'
+Plug 'wellle/targets.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'folke/which-key.nvim'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+" call vundle#end()            " required
+call plug#end()
+
 filetype plugin indent on    " required
 " Brief help
 " :PluginList       - lists configured plugins

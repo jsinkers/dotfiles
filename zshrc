@@ -90,6 +90,7 @@ plugins=(
   vi-mode
   web-search
   zsh-syntax-highlighting
+  fzf
 )
 
 # due to "widgets can only be called when zle is active" error 
@@ -179,6 +180,8 @@ alias ghci='ghci -fwarn-incomplete-patterns'
 #alias v="vim"
 alias v='nvim'
 alias python='python3'
+alias svim='vim -u ~/.SpaceVim/vimrc'
+
 # run screenfetch on start
 # cd ~
 screenfetch -w
