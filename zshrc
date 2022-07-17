@@ -185,7 +185,8 @@ alias svim='vim -u ~/.SpaceVim/vimrc'
 
 # run screenfetch on start
 # cd ~
-screenfetch -w
+#screenfetch -w
+nitch
 
 # Created by `userpath` on 2020-04-03 06:17:38
 export PATH="$PATH:/home/sinkers/.local/bin:/usr/local/go/bin"

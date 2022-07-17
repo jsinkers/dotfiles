@@ -12,65 +12,71 @@
 set nocompatible
 filetype off
 
-" Vundle 
-" set the runtime path to include Vundle and initialize
-" set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin("~/.vim/plugged")
 
-"call vundle#begin()
-
-" let Vundle manage Vundle, required
-" Plug 'VundleVim/Vundle.vim'
-" Plugin 'ycm-core/YouCompleteMe'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-sensible'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'rdnetto/YCM-Generator'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-"Plug 'feline-nvim/feline.nvim'
-Plug 'preservim/nerdcommenter'
-"Plugin 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
-Plug 'lervag/vimtex'
-Plug 'iamcco/markdown-preview.nvim'
-"Plugin 'mzlogin/vim-markdown-toc'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'luochen1990/rainbow'
-" For this to install successfully, run the following command after install: :call mkdp#util#install()
-Plug 'ap/vim-css-color'
-"Plugin 'scrooloose/nerdtree'
-Plug 'easymotion/vim-easymotion'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'neovimhaskell/haskell-vim'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+" file explorer
+"Plugin 'scrooloose/nerdtree'
+
+" fuzzy finder
+"Plug 'ctrlpvim/ctrlp.vim'
+
+" completion
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'windwp/nvim-autopairs'
 
-Plug 'kevinoid/vim-jsonc'
-Plug 'dbeniamine/cheat.sh-vim'
-Plug 'tikhomirov/vim-glsl'
-Plug 'psliwka/vim-smoothie'
+" snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" motions 
+Plug 'tpope/vim-surround'
 Plug 'justinmk/vim-sneak'
 Plug 'wellle/targets.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'folke/which-key.nvim'
+Plug 'tpope/vim-repeat'
+Plug 'godlygeek/tabular'
+Plug 'easymotion/vim-easymotion'
+Plug 'preservim/nerdcommenter'
+"Plugin 'tpope/vim-commentary'
 
-" color 
+" visual
+Plug 'folke/which-key.nvim'
+Plug 'dbeniamine/cheat.sh-vim'
+Plug 'psliwka/vim-smoothie'
+Plug 'luochen1990/rainbow'
+" For this to install successfully, run the following command after install: :call mkdp#util#install()
+Plug 'ap/vim-css-color'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Plug 'feline-nvim/feline.nvim'
+
+" color schemes
 Plug 'EdenEast/nightfox.nvim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'altercation/vim-colors-solarized'
 Plug 'flazz/vim-colorschemes'
+
+" language specific
+Plug 'rust-lang/rust.vim'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'kevinoid/vim-jsonc'
+Plug 'tikhomirov/vim-glsl'
+Plug 'lervag/vimtex'
+Plug 'iamcco/markdown-preview.nvim'
+Plug 'plasticboy/vim-markdown'
+"Plugin 'mzlogin/vim-markdown-toc'
 
 " All of your Plugins must be added before the following line
 " call vundle#end()            " required
@@ -248,39 +254,12 @@ highlight GitGutterChange ctermfg=3
 highlight GitGutterDelete ctermfg=1
 highlight GitGutterChangeDelete ctermfg=4
 
-" youcompleteme
-
-" enable/disable YCM integration >
-"let g:airline#extensions#ycm#enabled = 1
-
-" set error count prefix >
-"let g:airline#extensions#ycm#error_symbol = 'E:'
-
-" set warning count prefix >
-"let g:airline#extensions#ycm#warning_symbol = 'W:'
-
-" YCM always show the location list
-"let g:ycm_always_populate_location_list = 1
-" YCM line highlighting
-"let g:ycm_show_diagnostics_ui = 1
-"let g:ycm_enable_diagnostic_signs = 1
-"let g:ycm_enable_diagnostic_highlighting = 1
-"let g:ycm_echo_current_diagnostic = 1
-"let g:ycm_complete_in_comments = 1
-"let g:ycm_collect_identifiers_from_comments_and_strings = 1
-"let g:ycm_open_loclist_on_ycm_diags = 1
-"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-"let g:ycm_autoclose_preview_window_after_completion = 1
 " markdown languages
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'java', 'javascript', 'c']
 
 " search for visually selected text with //,
 " https://vim.fandom.com/wiki/Search_for_visually_selected_text
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-
-" remap ctrl+space for YCM
-" https://stackoverflow.com/questions/7722177/how-do-i-map-ctrl-x-ctrl-o-to-ctrl-space-in-terminal-vim/12344382#12344382
-"inoremap <C-@> <C-Space>
 
 " ultisnips triggers
 "let g:UltiSnipsExpandTrigger="<C-j>"
@@ -498,9 +477,8 @@ let g:sneak#label = 1
 " map F <Plug>Sneak_S
 
 lua << EOF
-require("which-key").setup {
-
-}
+require("nvim-autopairs").setup {}
+require("which-key").setup {}
 
 -- Setup nvim-cmp.
 local t = function(str)
