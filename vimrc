@@ -29,10 +29,9 @@ Plug 'rdnetto/YCM-Generator'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
-Plug 'altercation/vim-colors-solarized'
-Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+"Plug 'feline-nvim/feline.nvim'
 Plug 'preservim/nerdcommenter'
 "Plugin 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
@@ -49,8 +48,15 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'neovimhaskell/haskell-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'lifepillar/vim-solarized8'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
 Plug 'kevinoid/vim-jsonc'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'tikhomirov/vim-glsl'
@@ -60,9 +66,20 @@ Plug 'wellle/targets.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'folke/which-key.nvim'
 
+" color 
+Plug 'EdenEast/nightfox.nvim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'altercation/vim-colors-solarized'
+Plug 'flazz/vim-colorschemes'
+
 " All of your Plugins must be added before the following line
 " call vundle#end()            " required
 call plug#end()
+
+" nvim-cmp
+set completeopt=menu,menuone,noselect
+
+let g:airline_powerline_fonts = 1
 
 filetype plugin indent on    " required
 " Brief help
@@ -191,15 +208,12 @@ endif
 set iskeyword-=_
 
 " solarized color scheme
-syntax enable
-set termguicolors
-set background=dark
-colorscheme solarized8
-" attempt to correct error with highlighting
-"hi Quote ctermbg=109 guifg=#83a598
+" syntax enable
+" set termguicolors
+" set background=dark
+" colorscheme solarized8
 
-" nb for light mode
-" set background=light
+colorscheme nightfox
 
 " leader map to space
 "nnoremap <SPACE> <Nop>
@@ -269,158 +283,163 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 "inoremap <C-@> <C-Space>
 
 " ultisnips triggers
-let g:UltiSnipsExpandTrigger="<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
+"let g:UltiSnipsExpandTrigger="<C-j>"
+" let g:UltiSnipsExpandTrigger="<Plug>(ultisnips_expand)"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'      
+let g:UltiSnipsJumpForwardTrigger = '<Plug>(ultisnips_jump_forward)'
+let g:UltiSnipsJumpBackwardTrigger = '<Plug>(ultisnips_jump_backward)'
+let g:UltiSnipsListSnippets = '<c-x><c-s>'
+let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " ctrlp cursorline
 hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 
 " coc
 " if hidden is not set, TextEdit might fail.
-set hidden
-
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
-
-" Better display for messages
-"set cmdheight=2
-
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" " Use command ':verbose imap <tab>' to make sure tab is not mapped by other
-" plugin.
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>" 
-
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    else
-        call CocAction('doHover')
-    endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-    autocmd!
-    " Setup formatexpr specified filetype(s).
-    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-    " Update signature help on jump placeholder
-    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
-
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-" coc language support
-" haskell: in CocConfig
-
-" allow scrolling of diagnostic window
-nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-
-" airline coc support :h airline#extensions#coc
-let g:airline#extensions#coc#enabled = 1
-" enable/disable coc integration >
-let g:airline#extensions#coc#enabled = 1
-" change error symbol: >
-let airline#extensions#coc#error_symbol = 'E:'
-" change warning symbol: >
-let airline#extensions#coc#warning_symbol = 'W:'
-" change error format: >
-let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
-" change warning format: >
-let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+": set hidden
+": 
+": " Some servers have issues with backup files, see #649
+": set nobackup
+": set nowritebackup
+": 
+": " Better display for messages
+": "set cmdheight=2
+": 
+": " You will have bad experience for diagnostic messages when it's default 4000.
+": set updatetime=300
+": 
+": " don't give |ins-completion-menu| messages.
+": set shortmess+=c
+": 
+": " always show signcolumns
+": set signcolumn=yes
+": 
+": " Use tab for trigger completion with characters ahead and navigate.
+": " " Use command ':verbose imap <tab>' to make sure tab is not mapped by other
+": " plugin.
+": inoremap <silent><expr> <TAB>
+":             \ pumvisible() ? "\<C-n>" :
+":             \ <SID>check_back_space() ? "\<TAB>" :
+":             \ coc#refresh()
+": inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>" 
+": 
+": function! s:check_back_space() abort
+":     let col = col('.') - 1
+":     return !col || getline('.')[col - 1]  =~# '\s'
+": endfunction
+"
+"" Use <c-space> to trigger completion.
+"" inoremap <silent><expr> <c-space> coc#refresh()
+"
+"" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+"" position.
+"" Coc only does snippet and additional edit on confirm.
+"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"
+"" Use `[c` and `]c` to navigate diagnostics
+"nmap <silent> [c <Plug>(coc-diagnostic-prev)
+"nmap <silent> ]c <Plug>(coc-diagnostic-next)
+"
+"" Remap keys for gotos
+"nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gr <Plug>(coc-references)
+"
+"" Use K to show documentation in preview window
+"nnoremap <silent> K :call <SID>show_documentation()<CR>
+"
+"function! s:show_documentation()
+"    if (index(['vim','help'], &filetype) >= 0)
+"        execute 'h '.expand('<cword>')
+"    else
+"        call CocAction('doHover')
+"    endif
+"endfunction
+"
+"" Highlight symbol under cursor on CursorHold
+"autocmd CursorHold * silent call CocActionAsync('highlight')
+"
+"" Remap for rename current word
+"nmap <leader>rn <Plug>(coc-rename)
+"
+"" Remap for format selected region
+"xmap <leader>f  <Plug>(coc-format-selected)
+"nmap <leader>f  <Plug>(coc-format-selected)
+"
+"augroup mygroup
+"    autocmd!
+"    " Setup formatexpr specified filetype(s).
+"    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+"    " Update signature help on jump placeholder
+"    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+"augroup end
+"
+"" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+"xmap <leader>a  <Plug>(coc-codeaction-selected)
+"nmap <leader>a  <Plug>(coc-codeaction-selected)
+"
+"" Remap for do codeAction of current line
+"nmap <leader>ac  <Plug>(coc-codeaction)
+"" Fix autofix problem of current line
+"nmap <leader>qf  <Plug>(coc-fix-current)
+"
+"" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+"nmap <silent> <TAB> <Plug>(coc-range-select)
+"xmap <silent> <TAB> <Plug>(coc-range-select)
+"xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+"
+"" Use `:Format` to format current buffer
+"command! -nargs=0 Format :call CocAction('format')
+"
+"" Use `:Fold` to fold current buffer
+"command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+"
+"" use `:OR` for organize import of current buffer
+"command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+"
+"" Add status line support, for integration with other plugin, checkout `:h coc-status`
+""set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"
+"" Using CocList
+"" Show all diagnostics
+"nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+"" Manage extensions
+"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+"" Show commands
+"nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+"" Find symbol of current document
+"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+"" Search workspace symbols
+"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+"" Do default action for next item.
+"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+"" Do default action for previous item.
+"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+"" Resume latest coc list
+"nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+"
+"" coc language support
+"" haskell: in CocConfig
+"
+"" allow scrolling of diagnostic window
+"nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+"nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+"
+"" airline coc support :h airline#extensions#coc
+"let g:airline#extensions#coc#enabled = 1
+"" enable/disable coc integration >
+"let g:airline#extensions#coc#enabled = 1
+"" change error symbol: >
+"let airline#extensions#coc#error_symbol = 'E:'
+"" change warning symbol: >
+"let airline#extensions#coc#warning_symbol = 'W:'
+"" change error format: >
+"let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+"" change warning format: >
+"let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 
 " https://vi.stackexchange.com/questions/15182/copying-from-vim-to-ubuntu-bash-on-windows/15190#15190
 " WSL yank support
@@ -479,7 +498,191 @@ let g:sneak#label = 1
 " map F <Plug>Sneak_S
 
 lua << EOF
-    require("which-key").setup {
+require("which-key").setup {
+
+}
+
+-- Setup nvim-cmp.
+local t = function(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local cmp = require'cmp'
+
+cmp.setup({
+    snippet = {
+        -- REQUIRED - you must specify a snippet engine
+        expand = function(args) vim.fn["UltiSnips#Anon"](args.body) end
+    },
+    window = {
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
+    },
+
+    -- see https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#ultisnips--cmp-cmdline
+    mapping = {
+        ["<Tab>"] = cmp.mapping({
+            c = function()
+                if cmp.visible() then
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+                else
+                    cmp.complete()
+                end
+            end,
+            i = function(fallback)
+                if cmp.visible() then
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+                elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+                    vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), 'm', true)
+                else
+                    fallback()
+                end
+            end,
+            s = function(fallback)
+                if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+                    vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), 'm', true)
+                else
+                    fallback()
+                end
+            end
+        }),
+        ["<S-Tab>"] = cmp.mapping({
+            c = function()
+                if cmp.visible() then
+                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+                else
+                    cmp.complete()
+                end
+            end,
+            i = function(fallback)
+                if cmp.visible() then
+                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+                elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+                    return vim.api.nvim_feedkeys( t("<Plug>(ultisnips_jump_backward)"), 'm', true)
+                else
+                    fallback()
+                end
+            end,
+            s = function(fallback)
+                if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+                    return vim.api.nvim_feedkeys( t("<Plug>(ultisnips_jump_backward)"), 'm', true)
+                else
+                    fallback()
+                end
+            end
+        }),
+        ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+        ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+        ['<C-n>'] = cmp.mapping({
+            c = function()
+                if cmp.visible() then
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                else
+                    vim.api.nvim_feedkeys(t('<Down>'), 'n', true)
+                end
+            end,
+            i = function(fallback)
+                if cmp.visible() then
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                else
+                    fallback()
+                end
+            end
+        }),
+        ['<C-p>'] = cmp.mapping({
+            c = function()
+                if cmp.visible() then
+                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+                else
+                    vim.api.nvim_feedkeys(t('<Up>'), 'n', true)
+                end
+            end,
+            i = function(fallback)
+                if cmp.visible() then
+                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+                else
+                    fallback()
+                end
+            end
+        }),
+        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+        ['<C-e>'] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
+        ['<CR>'] = cmp.mapping({
+            i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+            -- c = function(fallback)
+            --     if cmp.visible() then
+            --         cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+            --     else
+            --         fallback()
+            --     end
+            -- end
+        }),
+            -- ... Your other configuration ...
+    },
+
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'vsnip' }, -- For vsnip users.
+        -- { name = 'luasnip' }, -- For luasnip users.
+        -- { name = 'ultisnips' }, -- For ultisnips users.
+        -- { name = 'snippy' }, -- For snippy users.
+        }, {
+        { name = 'buffer' },
+        })
+})
+-- Use buffer source for `/`.
+cmp.setup.cmdline('/', {
+    completion = { autocomplete = false },
+    sources = {
+        -- { name = 'buffer' }
+        { name = 'buffer', opts = { keyword_pattern = [=[[^[:blank:]].*]=] } }
+    }
+})
+
+-- Use cmdline & path source for ':'.
+cmp.setup.cmdline(':', {
+    completion = { autocomplete = false },
+    sources = cmp.config.sources({
+        { name = 'path' }
+        }, {
+        { name = 'cmdline' }
+    })
+})
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+    { name = 'buffer' },
+    })
+})
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = 'buffer' }
+        }
+    })
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+    { name = 'path' }
+    }, {
+    { name = 'cmdline' }
+    })
+})
+
+-- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+require'lspconfig'.pyright.setup {
 
     }
+
+    --require('feline').setup()
 EOF
